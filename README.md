@@ -7,3 +7,5 @@ This bot is using python Selenium and BS4 so you have to install them.
 3-) How to install BS4 (https://www.tutorialspoint.com/beautiful_soup/beautiful_soup_installation.htm)
 
 You can learn the trends and write the tweets with using this bot.
+
+Run with "python main.py".
