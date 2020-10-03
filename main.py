@@ -4,6 +4,7 @@ while True:
     choice = input("0 - Log in Twitter. \n"
                    "1 - Get Trends\n"
                    "2 - Send Tweet\n"
+                   "3 - Follow Others\n"
                    "99 - Exit\n")
 
     if choice == "0":
@@ -14,6 +15,9 @@ while True:
 
     elif choice == "2":
         functions.SendTweet()
+
+    elif choice == "3":
+        functions.Follow()
 
     elif choice == "99":
         break

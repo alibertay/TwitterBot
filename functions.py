@@ -108,3 +108,36 @@ def SendTweet():
         print("Please log in.")
 
     browser.close()
+
+def Follow():
+    options = Options()
+    options.add_argument('--headless')
+    browser = webdriver.Chrome(options=options)
+
+    browser.get("https://www.twitter.com/login")
+    time.sleep(2)
+
+    if account.Account.LogIn == True:
+        login_area = browser.find_elements_by_class_name(
+            "r-30o5oe.r-1niwhzg.r-17gur6a.r-1yadl64.r-deolkf.r-homxoj.r-poiln3.r-7cikom.r-1ny4l3l.r-1inuy60.r-utggzx.r-vmopo1.r-1w50u8q.r-1lrr6ok.r-1dz5y72.r-fdjqy7.r-13qz1uu")[
+            0]
+        login_area.send_keys(account.Account.username)
+        password_area = browser.find_elements_by_class_name(
+            "r-30o5oe.r-1niwhzg.r-17gur6a.r-1yadl64.r-deolkf.r-homxoj.r-poiln3.r-7cikom.r-1ny4l3l.r-1inuy60.r-utggzx.r-vmopo1.r-1w50u8q.r-1lrr6ok.r-1dz5y72.r-fdjqy7.r-13qz1uu")[
+            1]
+        password_area.send_keys(account.Account.password, Keys.RETURN)
+
+        time.sleep(2)
+
+        user = input("Write the username who you want to follow without '@': ")
+        browser.get("https://www.twitter.com/{user}".format(user=user))
+        time.sleep(2)
+
+        follow_button = browser.find_element_by_xpath(
+            "//*[@id='react-root']/div/div/div[2]/main/div/div/div/div/div/div[2]/div/div/div[1]/div/div[1]/div/div/div/div/div/span/span")
+        follow_button.click()
+        time.sleep(2)
+        browser.close()
+
+    else:
+        print("Please log in.")
